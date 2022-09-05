@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Morax</title>
   
-  <subtitle>jb</subtitle>
+  <subtitle>hello</subtitle>
   <link href="https://moraxs.github.io/atom.xml" rel="self"/>
   
   <link href="https://moraxs.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://moraxs.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Morax</name>
     
   </author>
   
