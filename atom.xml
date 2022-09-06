@@ -3,11 +3,11 @@
   <title>Morax</title>
   
   <subtitle>hello</subtitle>
-  <link href="https://wuguangfei.github.io/atom.xml" rel="self"/>
+  <link href="https://moraxs.github.io/atom.xml" rel="self"/>
   
-  <link href="https://wuguangfei.github.io/"/>
+  <link href="https://moraxs.github.io/"/>
   <updated>2022-09-04T13:57:31.672Z</updated>
-  <id>https://wuguangfei.github.io/</id>
+  <id>https://moraxs.github.io/</id>
   
   <author>
     <name>Morax</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>如何自己编译一个Grasscutter服务器核心jar</title>
-    <link href="https://wuguangfei.github.io/2022/09/04/text/"/>
-    <id>https://wuguangfei.github.io/2022/09/04/text/</id>
+    <link href="https://moraxs.github.io/2022/09/04/text/"/>
+    <id>https://moraxs.github.io/2022/09/04/text/</id>
     <published>2022-09-04T13:29:44.089Z</published>
     <updated>2022-09-04T13:57:31.672Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://wuguangfei.github.io/2022/09/04/hello-world/"/>
-    <id>https://wuguangfei.github.io/2022/09/04/hello-world/</id>
+    <link href="https://moraxs.github.io/2022/09/04/hello-world/"/>
+    <id>https://moraxs.github.io/2022/09/04/hello-world/</id>
     <published>2022-09-04T09:20:40.488Z</published>
     <updated>2022-09-04T12:40:23.665Z</updated>
     
