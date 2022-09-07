@@ -6,7 +6,7 @@
   <link href="https://moraxs.github.io/atom.xml" rel="self"/>
   
   <link href="https://moraxs.github.io/"/>
-  <updated>2022-09-07T00:50:05.178Z</updated>
+  <updated>2022-09-07T00:52:36.179Z</updated>
   <id>https://moraxs.github.io/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何自己编译一个Grasscutter服务器核心jar,开始前请确保已经正确安装并配置Java SE Development Kits - 17</title>
+    <title>如何自己编译一个Grasscutter服务器核心jar,</title>
     <link href="https://moraxs.github.io/2022/09/06/text/"/>
     <id>https://moraxs.github.io/2022/09/06/text/</id>
     <published>2022-09-06T01:37:35.277Z</published>
-    <updated>2022-09-07T00:50:05.178Z</updated>
+    <updated>2022-09-07T00:52:36.179Z</updated>
     
-    <content type="html"><![CDATA[<p>本教程基于Github开源项目 <a href="https://github.com/Grasscutters/Grasscutter">Grasscutter</a> </p><h2 id="开始配置"><a href="#开始配置" class="headerlink" title="开始配置"></a>开始配置</h2><p>JAVA版本：Java SE Development Kits - 17<br>首先去到grasscutter仓库，将仓库clone至自己的电脑中并解压<br>进入解压目录,右键打开Windows终端&#x2F;cmd&#x2F;Powershell并输入以下两条命令</p><h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.\gradlew.bat</span><br><span class="line">.\gradlew jar</span><br></pre></td></tr></table></figure><p>不出意外的话就可以在文件夹中看到jar文件了<br>输入java -jar .\grasscutter-1.1.1-dev.jar运行，文件名根据自己实际情况修改</p>]]></content>
+    <content type="html"><![CDATA[<p>本教程基于Github开源项目 <a href="https://github.com/Grasscutters/Grasscutter">Grasscutter</a> 开始前请确保已经正确安装并配置Java SE Development Kits - 17</p><h2 id="开始配置"><a href="#开始配置" class="headerlink" title="开始配置"></a>开始配置</h2><p>JAVA版本：Java SE Development Kits - 17<br>首先去到grasscutter仓库，将仓库clone至自己的电脑中并解压<br>进入解压目录,右键打开Windows终端&#x2F;cmd&#x2F;Powershell并输入以下两条命令</p><h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.\gradlew.bat</span><br><span class="line">.\gradlew jar</span><br></pre></td></tr></table></figure><p>不出意外的话就可以在文件夹中看到jar文件了<br>输入java -jar .\grasscutter-1.1.1-dev.jar运行，文件名根据自己实际情况修改</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;本教程基于Github开源项目 &lt;a href=&quot;https://github.com/Grasscutters/Grasscutter&quot;&gt;Grasscutter&lt;/a&gt; &lt;/p&gt;
-&lt;h2 id=&quot;开始配置&quot;&gt;&lt;a href=&quot;#开始配置&quot; class=&quot;headerlin</summary>
+    <summary type="html">&lt;p&gt;本教程基于Github开源项目 &lt;a href=&quot;https://github.com/Grasscutters/Grasscutter&quot;&gt;Grasscutter&lt;/a&gt; 开始前请确保已经正确安装并配置Java SE Development Kits - 17&lt;/p&gt;
+&lt;h</summary>
       
     
     
