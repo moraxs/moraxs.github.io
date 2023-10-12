@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Morax</title>
+  
+  <subtitle>TECH OTAKUS SAVE THE WORLD</subtitle>
+  <link href="https://moraxs.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://moraxs.github.io/"/>
+  <updated>2023-04-14T11:52:19.218Z</updated>
+  <id>https://moraxs.github.io/</id>
+  
+  <author>
+    <name>Morax</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux服务器安装zhenxun-bot(Ubuntu为例)</title>
+    <link href="https://moraxs.github.io/2022/12/21/Linux_install_zhenxun/"/>
+    <id>https://moraxs.github.io/2022/12/21/Linux_install_zhenxun/</id>
+    <published>2022-12-21T10:37:41.000Z</published>
+    <updated>2023-04-14T11:52:19.218Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.moraxs.top/2022/09/08/%E6%90%AD%E5%BB%BAZero-Bot-Plugin/">Windows安装zhenxun-bot与Zreo-bot-plugin</a></p><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=776600090&bvid=BV1A14y1P7nV&cid=932733764&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe></div>---<p>没有服务器?<a href="https://www.rainyun.com/?ref=Mjc1OTc=">点我购买低价服务器</a><em>洛杉矶云服务器10¥&#x2F;月起</em><br>部分功能需要ffmpeg，此处给出Ubuntu安装方法</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ffmpeg</span><br><span class="line">ffmpeg -version <span class="comment">#验证版本</span></span><br></pre></td></tr></table></figure><h2 id="安装go-cqhttp"><a href="#安装go-cqhttp" class="headerlink" title="安装go-cqhttp"></a>安装go-cqhttp</h2><p>1.从<a href="https://github.com/Mrs4s/go-cqhttp/releases/tag/v1.0.0-rc3">这里</a>下载与自己系统匹配的版本<br>2.将自己下载的go-cqhttp上传到自己的服务器目录，我的目录为&#x2F;root&#x2F;BOT，选中go-cqhttp_linux_XXXXXX.tar.gz,点击解压，并将BOT文件夹的权限修改为777<strong>若之前上传的目录不同，此处需要替换为自己的目录，下文同</strong><br>3.打开远程工具，执行以下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo su <span class="comment">#只有在提示-bash: cd: /<span class="doctag">XXX:</span> Permission denied时才需要执行此命令，否则无需执行</span></span><br><span class="line"><span class="built_in">cd</span> /root/BOT</span><br><span class="line">./go-cqhttp</span><br></pre></td></tr></table></figure><p>首次运行会让你选择通信方式，选择3 （反向 Websocket 通信）<br><img src="https://i.imgtg.com/2022/12/21/HDXUM.jpg" alt="avatar"><br>4.打开config.yml文件，按照提示填写bot的账号密码<br>5修改反向链接universal</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">universal: ws://127.0.0.1:8080/onebot/v11/ws/</span><br></pre></td></tr></table></figure><p>6.启动go-cqhttp，若无法登录(当前登录存在风险)<br>请*<em>在本地按照相同的方法部署一份go-cqhttp，反向链接universal可不修改，在本地登录完成之后将device.json与session.token上传至与go-cqhttp同级目录下即可</em><br>7.重启服务器上的go-cqhttp完成登录</p><h2 id="安装Postgresql数据库"><a href="#安装Postgresql数据库" class="headerlink" title="安装Postgresql数据库"></a>安装Postgresql数据库</h2><p>**方法一(小白友好)**入宝塔Linux面板，依次点击数据库-PgSQL，之后点击安装，PGSQL的版本不会对真寻造成太大影响。<br>安装完成之后点击数据库列表-添加数据库，输入数据库名&#x2F;用户名&#x2F;<br><strong>方法二（手动安装）</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.直接命令行输入</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install postgresql postgresql-contrib</span><br><span class="line"><span class="comment">#2.创建数据库和用户（依次输入）</span></span><br><span class="line">sudo su - postgres  <span class="comment"># 切换用户</span></span><br><span class="line">psql</span><br><span class="line">        <span class="comment">#  用户名↓                # 密码↓</span></span><br><span class="line"><span class="comment"># CREATE USER uname WITH PASSWORD &#x27;zhenxun&#x27;;      # 创建用户（可不执行）</span></span><br><span class="line"></span><br><span class="line">                                  <span class="comment"># 密码↓</span></span><br><span class="line">alter user postgres with password <span class="string">&#x27;zhenxun_bot&#x27;</span>;    <span class="comment"># 修改postgres的密码</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 数据库名称↓    所有者(用户名)↓</span></span><br><span class="line">CREATE DATABASE zhenxun_bot OWNER postgres;             <span class="comment"># 创建数据库</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="安装zhenxun-bot"><a href="#安装zhenxun-bot" class="headerlink" title="安装zhenxun-bot"></a>安装zhenxun-bot</h2><p>1依次执行以下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/HibiKier/zhenxun_bot.git <span class="comment">#在BOT目录下执行</span></span><br><span class="line"><span class="built_in">cd</span> zhenxun_bot</span><br><span class="line">apt install python3-pip <span class="comment">#Do you want to continue? 输入y回车</span></span><br><span class="line">pip3 install poetry     </span><br><span class="line">poetry install  <span class="comment">#安装过程中请不要退出！        </span></span><br><span class="line">poetry shell            </span><br><span class="line">playwright install chromium</span><br><span class="line">playwright install-deps chromium</span><br></pre></td></tr></table></figure><p>2.设置超级用户，打开 .env.dev 文件，在中添加自己的QQ</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUPERUSERS=[<span class="string">&quot;123456789&quot;</span>]</span><br></pre></td></tr></table></figure><p>3.打开 configs&#x2F;config.py 填写数据库数据</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>: str = <span class="string">&quot;&quot;</span>  <span class="comment"># 数据库连接链接</span></span><br><span class="line">sql_name: str = <span class="string">&quot;postgresql&quot;</span></span><br><span class="line">user: str = <span class="string">&quot;uname&quot;</span> <span class="comment">#用户名</span></span><br><span class="line">password: str = <span class="string">&quot;password&quot;</span> <span class="comment">#密码</span></span><br><span class="line">address: str = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">port: str = <span class="string">&quot;5432&quot;</span></span><br><span class="line">database: str = <span class="string">&quot;XXXXX&quot;</span> <span class="comment">#数据库名                   </span></span><br></pre></td></tr></table></figure><h2 id="启动zhenxun"><a href="#启动zhenxun" class="headerlink" title="启动zhenxun"></a>启动zhenxun</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 bot.py</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.moraxs.top/2022/09/08/%E6%90%AD%E5%BB%BAZero-Bot-Plugin/&quot;&gt;Windows安装zhenxun-bot与Zreo-bot-plugin&lt;/a&gt;&lt;/p&gt;
+&lt;div style=&quot;p</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>搭建mirai-bot</title>
+    <link href="https://moraxs.github.io/2022/09/11/%E6%90%AD%E5%BB%BAmirai-bot/"/>
+    <id>https://moraxs.github.io/2022/09/11/%E6%90%AD%E5%BB%BAmirai-bot/</id>
+    <published>2022-09-10T23:37:41.000Z</published>
+    <updated>2022-09-11T12:27:39.761Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载bot框架"><a href="#下载bot框架" class="headerlink" title="下载bot框架"></a>下载bot框架</h2><p>bot框架 <a href="https://github.com/mamoe/mirai/blob/dev/docs/UserManual.md">下载</a>,推荐使用纯控制台版本，更稳定<br><a href="https://github.com/mamoe/mirai/blob/dev/docs/ConsoleTerminal.md">使用纯控制台版本</a><br><a href="https://github.com/iTXTech/mcl-installer/releases">下载mcl-installer</a>选择适合自己系统的版本下载安装<br>下载完成之后，将其放在一个文件夹里，由于是exe文件，所以可能会报毒，添加信任即可<br>之后出现的命令一直回车保持默认选项即可<br>下载完成之后会生成一些文件，运行mcl.cmd,该程序还会自动下载一些文件，出现的红字可以无视</p><h2 id="登录bot"><a href="#登录bot" class="headerlink" title="登录bot"></a>登录bot</h2><p>输入&#x2F;login qq账号 qq密码    回车<br><img src="https://i.imgtg.com/2022/09/08/vpH9t.jpg" alt="aa"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;下载bot框架&quot;&gt;&lt;a href=&quot;#下载bot框架&quot; class=&quot;headerlink&quot; title=&quot;下载bot框架&quot;&gt;&lt;/a&gt;下载bot框架&lt;/h2&gt;&lt;p&gt;bot框架 &lt;a href=&quot;https://github.com/mamoe/mirai/blob</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>win搭建Zero-Bot-Plugin与zhenxun-bot</title>
+    <link href="https://moraxs.github.io/2022/09/08/%E6%90%AD%E5%BB%BAZero-Bot-Plugin/"/>
+    <id>https://moraxs.github.io/2022/09/08/%E6%90%AD%E5%BB%BAZero-Bot-Plugin/</id>
+    <published>2022-09-08T10:37:41.000Z</published>
+    <updated>2022-12-21T09:38:16.302Z</updated>
+    
+    <content type="html"><![CDATA[<p>本人非开发者，侵权删<br>zero与none bot都依赖go-cqhttp运行，因此可实现一个QQ拥有两个机器人的功能<br><a href="https://github.com/FloatTech/ZeroBot-Plugin">Zero仓库地址</a><br><a href="https://github.com/HibiKier/zhenxun_bot">zhenxun仓库地址</a><br>推荐代码编辑器vs code 非要用记事本也不是不可以 doge<br>本教程包含两个bot，zero-bot与zhenxun-bot，请自行选择是否全部安装<br>部分语音功能需要ffmpeg，没有的自行百度下载安装<br>zhenxun需要py环境</p><h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p>go语言环境 <a href="https://golang.google.cn/dl/">点击下载</a> 选择适合自己系统的版本安装<br>tips:<del>不要下载最新的1.19.1版本，会提示不支持此版本，推荐1.18.4</del><strong>新版Zero需要1.19.x版本</strong><br>python环境 <a href="https://www.python.org/downloads/">点击下载</a>zhenxun需要py3.8或3.9</p><h2 id="开始安装-Go-cqhttp"><a href="#开始安装-Go-cqhttp" class="headerlink" title="开始安装 Go-cqhttp"></a>开始安装 Go-cqhttp</h2><p>Go-cqhttp <a href="https://github.com/Mrs4s/go-cqhttp/releases/tag/v1.0.0-rc3">点击下载</a> 选择适合自己系统的版本下载<br>解压至任意文件夹之后，启动go-cqhttp.exe，然后启动gocqhttp.bat,通信方式选择23<br>接下来配置config文件，输入QQ小号的账号，密码根据实际情况填写，若密码空白，则扫码登录<br>修改正向WS服务器监听地址</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">address: 127.0.0.1:6700</span><br></pre></td></tr></table></figure><p>然后在config.yml的内容末尾加入，注意位置要与上面的代码对齐，否则会报错</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- pprof:</span><br><span class="line">    <span class="comment"># 是否禁用pprof性能分析服务器</span></span><br><span class="line">    disabled: <span class="literal">true</span></span><br><span class="line">    <span class="comment"># pprof服务器监听地址</span></span><br><span class="line">    host: 127.0.0.1</span><br><span class="line">    <span class="comment"># pprof服务器监听端口</span></span><br><span class="line">    port: 7700 </span><br></pre></td></tr></table></figure><p>修改反向链接的universal</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">universal: ws://127.0.0.1:8080/onebot/v11/ws/</span><br></pre></td></tr></table></figure><p>zhenxun使用8080，zero使用6700端口</p><h2 id="登录机器人"><a href="#登录机器人" class="headerlink" title="登录机器人"></a>登录机器人</h2><p>打开bot根目录下的bat文件<br>使用密码&#x2F;扫码登录<br>（本地登录请忽视）若扫码提示当前登录环境存在风险可以先在本地登录，再把session.token复制到服务器目录中就可以了。或者使用vpn挂到你服务器所在的地区，继续尝试扫码登录</p><h2 id="配置Zero-Bot-plugin"><a href="#配置Zero-Bot-plugin" class="headerlink" title="配置Zero-Bot-plugin"></a>配置Zero-Bot-plugin</h2><p><a href="https://github.com/FloatTech/ZeroBot-Plugin">仓库地址</a><br>前往仓库，点击绿色的code-Download Zip，然后将整个文件夹解压至bot根目录（其实解压到哪里无所谓，解压至根目录为了方便之后的管理）<br>配置main.go 在184行设置端口号<br>  186行设置机器人的默认名称<br>  215行设置主人信息，记得把注释去掉，否则无法生效<br>  配置完成之后在确保gocqhttp启动的情况下，启动run.bat,初次运行会花费较长时间，请耐心等待<br>  启动成功之后，在群内发送 &#x2F;响应   否则机器人是无法处理群内消息的</p><h2 id="配置zhenxun-bot-Postgresql数据库"><a href="#配置zhenxun-bot-Postgresql数据库" class="headerlink" title="配置zhenxun bot-Postgresql数据库"></a>配置zhenxun bot-Postgresql数据库</h2><p>在<a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">Postgresql下载页面</a>下载适合自己系统的版本下载并安装<br>安装时一路next，中途会让你配置密码<br>在安装目录下找到PgAdmin.exe,双击打开，输入密码连接数据库，最后创建一个新的数据库即可</p><h2 id="部署zhenxun-bot"><a href="#部署zhenxun-bot" class="headerlink" title="部署zhenxun bot"></a>部署zhenxun bot</h2><p><a href="https://github.com/HibiKier/zhenxun_bot">zhenxun仓库地址</a><br>从仓库克隆或者下载zip解压<br>下载依赖</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install poetry</span><br><span class="line">poetry install</span><br><span class="line">poetry shell</span><br><span class="line">playwright install chromium</span><br></pre></td></tr></table></figure><p>打开 .env.dev 文件，在SUPERUSERS中添加自己的QQ<br>打开 configs&#x2F;config.py 填写数据库数据，直接修改bind str即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">                            创建数据库时填写的密码</span><br><span class="line">                                  ↓</span><br><span class="line"><span class="built_in">bind</span>: str = <span class="string">&quot;postgresql://user:password@127.0.0.1:5432/database&quot;</span></span><br><span class="line">                           ↑        </span><br><span class="line">                      创建数据库时填写的用户名</span><br></pre></td></tr></table></figure><h2 id="启动zhenxun"><a href="#启动zhenxun" class="headerlink" title="启动zhenxun"></a>启动zhenxun</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3 bot.py</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">python bot.py</span><br></pre></td></tr></table></figure><p>打开 configs&#x2F;config.yaml，里面包含的是各种插件的配置项，填写完毕后重启真寻Bot<br>若配置文件为空，请重新启动生成</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;本人非开发者，侵权删&lt;br&gt;zero与none bot都依赖go-cqhttp运行，因此可实现一个QQ拥有两个机器人的功能&lt;br&gt;&lt;a href=&quot;https://github.com/FloatTech/ZeroBot-Plugin&quot;&gt;Zero仓库地址&lt;/a&gt;&lt;br&gt;&lt;a</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>吃掉cxk新概念音游</title>
+    <link href="https://moraxs.github.io/2022/09/07/EatCXK/"/>
+    <id>https://moraxs.github.io/2022/09/07/EatCXK/</id>
+    <published>2022-09-07T04:17:59.979Z</published>
+    <updated>2022-09-07T04:23:43.029Z</updated>
+    
+    <content type="html"><![CDATA[<p>吃掉cxk新概念音游 <a href="https://moraxs.github.io/Eatcxk">点击这里跳转</a> Github托管，打不开多试几次，或者更换网络</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;吃掉cxk新概念音游 &lt;a href=&quot;https://moraxs.github.io/Eatcxk&quot;&gt;点击这里跳转&lt;/a&gt; Github托管，打不开多试几次，或者更换网络&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://moraxs.github.io/2022/09/06/hello-world/"/>
+    <id>https://moraxs.github.io/2022/09/06/hello-world/</id>
+    <published>2022-09-06T01:37:35.276Z</published>
+    <updated>2022-09-04T12:40:23.665Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

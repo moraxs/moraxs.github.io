@@ -1,0 +1,1 @@
+var posts=["2022/09/07/EatCXK/","2022/12/21/Linux_install_zhenxun/","2022/09/08/搭建Zero-Bot-Plugin/","2022/09/11/搭建mirai-bot/","2022/09/06/hello-world/"];function toRandomPost(){pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);};
