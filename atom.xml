@@ -6,7 +6,7 @@
   <link href="https://moraxs.github.io/atom.xml" rel="self"/>
   
   <link href="https://moraxs.github.io/"/>
-  <updated>2024-01-03T15:26:59.198Z</updated>
+  <updated>2024-03-15T13:57:37.059Z</updated>
   <id>https://moraxs.github.io/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>白嫖4090算力训练语音模型</title>
+    <link href="https://moraxs.github.io/2024/03/15/RVC/"/>
+    <id>https://moraxs.github.io/2024/03/15/RVC/</id>
+    <published>2024-03-15T10:37:41.000Z</published>
+    <updated>2024-03-15T13:57:37.059Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过<a href="https://openbayes.com/console/signup?r=morax_9lpZ">此链接</a>注册openbayes账号，可多获得1个小时免费算力，总计3.5个小时。</p><h2 id="克隆环境"><a href="#克隆环境" class="headerlink" title="克隆环境"></a>克隆环境</h2><p><a href="https://openbayes.com/console/morax/containers/7vvvbtGOwts">点击直达链接</a></p><p>1进入网站之后，点击右上角的<strong>克隆</strong>按钮，即可将环境克隆到自己的账号下。<br><img src="https://img.morax.top/file/3e7808d006b26444ba613.png" alt="avatar"></p><p>2点击审核并执行<br><img src="https://img.morax.top/file/49c50cbaa926dc8103f48.png" alt="avatar1"></p><p>3点击继续执行</p><h2 id="开始部署"><a href="#开始部署" class="headerlink" title="开始部署"></a>开始部署</h2><p>1.进入工作空间<br><img src="https://img.morax.top/file/165e9b7e128b11eee7d93.png" alt="img"></p><p>2.打开左侧的ipynb文件<br><img src="https://img.morax.top/file/5e94f07fd86ba1d5e0fee.png" alt="img"></p><p>3.运行-运行所有单元格<br><img src="https://img.morax.top/file/52ae7b42c876461d0cb74.png" alt="img"></p><p>4.等待依赖安装完成，待控制台出现<strong><a href="http://0.0.0.0:8080/">http://0.0.0.0:8080</a></strong>之后，打开右侧api地址。</p><p>5.大功告成！！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;通过&lt;a href=&quot;https://openbayes.com/console/signup?r=morax_9lpZ&quot;&gt;此链接&lt;/a&gt;注册openbayes账号，可多获得1个小时免费算力，总计3.5个小时。&lt;/p&gt;
+&lt;h2 id=&quot;克隆环境&quot;&gt;&lt;a href=&quot;#克隆环</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://moraxs.github.io/2024/01/18/%E6%95%99%E7%A8%8B/"/>
+    <id>https://moraxs.github.io/2024/01/18/%E6%95%99%E7%A8%8B/</id>
+    <published>2024-01-18T00:37:16.798Z</published>
+    <updated>2024-01-18T01:10:17.573Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>只是做个总结方便今后自用。原作者是 <a href="https://space.bilibili.com/5760446">https://space.bilibili.com/5760446</a></p><h1 id="核心资源"><a href="#核心资源" class="headerlink" title="核心资源"></a>核心资源</h1><ul><li><p>训练包下载地址</p><blockquote><p>123网盘下载链接：<a href="https://www.123pan.com/s/5tIqVv-QHNcv.html">https://www.123pan.com/s/5tIqVv-QHNcv.html</a> </p><p>百度网盘下载链接：<a href="https://pan.baidu.com/s/19530AOh2H3Feuti_D51cXw">https://pan.baidu.com/s/19530AOh2H3Feuti_D51cXw</a> </p><p>提取码：reqy</p><p>N卡用户请下载RVCXXXXNvidia.7z</p><p>A卡I卡用户请下载RVXXXXAMD_Intel.7z</p></blockquote></li><li><p>&#x3D;&#x3D;B站视频教程（核心, 看这个跟着做就好拉）&#x3D;&#x3D;</p><blockquote><p><a href="https://www.bilibili.com/video/BV1pm4y1z7Gm/?spm_id_from=333.880.my_history.page.click&amp;vd_source=cae745c8677998a9d13dc2fe13596a2c">https://www.bilibili.com/video/BV1pm4y1z7Gm/?spm_id_from=333.880.my_history.page.click&amp;vd_source=cae745c8677998a9d13dc2fe13596a2c</a></p></blockquote></li><li><p>图文教程</p><blockquote><p><a href="https://docs.qq.com/doc/DUnZiZENqT2llQnJt">https://docs.qq.com/doc/DUnZiZENqT2llQnJt</a></p></blockquote></li></ul><h1 id="工具包介绍"><a href="#工具包介绍" class="headerlink" title="工具包介绍"></a>工具包介绍</h1><p>&#x3D;&#x3D;这个是本笔记的图片缓存，别删，删了看不了笔记了&#x3D;&#x3D;</p> <img src="https://img.morax.top/file/53051a74ec705bfc3156d.png" alt="image-20240118030146911" style="zoom:67%;" /><p>&#x3D;&#x3D;这个文件夹是可莉的训练集音源（训练集都必须要 .wav 格式）&#x3D;&#x3D;</p> <img src="https://img.morax.top/file/969dff1392d880f31333b.png" alt="image-20240118025651085" style="zoom:67%;" /><p>&#x3D;&#x3D;上面那个是模型、下面那个是索引文件。（这俩在推理的时候都要用到）&#x3D;&#x3D;</p><p> <img src="https://img.morax.top/file/3e0f242cd6e6484c59dbc.png" alt="image-20240118025916963"></p><p>&#x3D;&#x3D;模型推理使用&#x3D;&#x3D;</p><blockquote><p>1.选择模型（如上面的 kleetest.pth）</p><p>2.选择需要变声的视频</p><p>3.选择索引（如上面的 added_xxxx.）</p><ol start="4"><li>和 5. 随便选，哪个效果好用哪个</li></ol></blockquote> <img src="https://img.morax.top/file/f9f8185ec82c40c9f43d0.png" alt="image-20240118025959761" style="zoom:80%;" />]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;只是做个总结方便今后自用。原作者是 &lt;a href=&quot;https://space.bilibili.com/5760446&quot;&gt;https:/</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>群Minecraft服务器</title>
